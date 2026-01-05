@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>User Profile with Auto Logout</title>
+<link rel="stylesheet" href="UserHome_Css.css">
+<style>
+.session-info {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.timer {
+    color: #d9534f;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+    <header>
+        <h1 class="hd">National Ticket Booking Spot</h1>
+        <div class="home">
+            <p class="menu"><a href="userhome">Home</a></p>
+        </div>
+        <div class="home">
+            <p class="menu"><a href="userlogout">Logout</a></p>
+        </div>
+    </header>
+
+    <!-- Session Timer Display -->
+    <div class="session-info">
+        <div>Session expires in: <span class="timer" id="sessionTimer">10:00</span></div>
+        <div><button onclick="extendSession()">Extend Session</button></div>
+    </div>
+
+    <div class='tab'>
+        <p class='menu'>Hey ! <span id="userName">User</span>, Welcome to NITRTC</p>
+        <p>Here You can Edit, View Your Profile and change your Password.</p>
+        <p>Thanks For Being Connected With Us!</p>
+    </div>
+
+    <div class="main">
+        <p class="menu"><a href='viewuserprofile'>View Profile</a></p>
+        <p class="menu"><a href='edituserprofile'>Edit Profile</a></p>
+        <p class="menu"><a href='changeuserpassword'>Change Password</a></p>
+    </div>
+
+    <script>
+        // Auto logout functionality
+        let sessionTimeLeft = 600; // 10 minutes in seconds
+        let warningShown = false;
+
+        function updateSessionTimer() {
+            const minutes = Math.floor(sessionTimeLeft / 60);
+            const seconds = sessionTimeLeft % 60;
+            document.getElementById('sessionTimer').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            // Show warning at 2 minutes
+            if (sessionTimeLeft <= 120 && !warningShown) {
+                warningShown = true;
+                if (confirm('Your session will expire in 2 minutes. Do you want to extend it?')) {
+                    extendSession();
+                }
+            }
+
+            // Auto logout at 0
+            if (sessionTimeLeft <= 0) {
+                alert('Session expired! You will be logged out.');
+                window.location.href = 'UserLogin.html';
+                return;
+            }
+
+            sessionTimeLeft--;
+        }
+
+        function extendSession() {
+            sessionTimeLeft = 600; // Reset to 10 minutes
+            warningShown = false;
+            alert('Session extended for 10 more minutes!');
+        }
+
+        // Update timer every second
+        setInterval(updateSessionTimer, 1000);
+
+        // Try to get user name from session (if available)
+        function loadUserInfo() {
+            // This would normally fetch from server
+            // For now, we'll use a placeholder
+            const userName = 'User'; // This should come from server
+            document.getElementById('userName').textContent = userName;
+        }
+
+        // Load user info on page load
+        window.onload = loadUserInfo;
+    </script>
+</body>
+</html>

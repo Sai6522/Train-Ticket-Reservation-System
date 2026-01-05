@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quick User Registration Test</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+.form-box { border: 1px solid #ccc; padding: 20px; margin: 10px 0; border-radius: 5px; }
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"] { width: 250px; padding: 5px; margin: 5px; }
+input[type="submit"] { padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 4px; }
+</style>
+</head>
+<body>
+    <h2>Quick User Registration Test</h2>
+    
+    <div class="form-box">
+        <h3>Register New User</h3>
+        <form action="userreg" method="post">
+            Email ID: <input type="email" name="mailid" value="test@example.com" required><br><br>
+            Password: <input type="password" name="pword" value="test123" required><br><br>
+            First Name: <input type="text" name="firstname" value="Test" required><br><br>
+            Last Name: <input type="text" name="lastname" value="User"><br><br>
+            Address: <input type="text" name="address" value="Test Address, Test City"><br><br>
+            Phone Number: <input type="tel" name="phoneno" value="9876543210" required><br><br>
+            <input type="submit" value="REGISTER USER">
+        </form>
+    </div>
+
+    <div class="form-box">
+        <h3>Current Users in Database:</h3>
+        <p>admin@demo.com - System Admin</p>
+        <p>shashi@demo.com - Shashi Raj</p>
+        <p><strong>Try registering: test@example.com</strong></p>
+    </div>
+
+    <div class="form-box">
+        <p><strong>Note:</strong> After successful registration, you can login with the new credentials.</p>
+        <p><a href="UserLogin.html">User Login</a> | <a href="UserRegister.html">Standard Registration</a></p>
+    </div>
+</body>
+</html>

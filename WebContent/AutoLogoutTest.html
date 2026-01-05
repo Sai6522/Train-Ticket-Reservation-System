@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Auto Logout Test</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+.info-box { border: 1px solid #ccc; padding: 15px; margin: 10px 0; border-radius: 5px; background: #f9f9f9; }
+.logout-timer { font-size: 18px; font-weight: bold; color: #d9534f; }
+</style>
+</head>
+<body>
+    <h2>Auto Logout Functionality Test</h2>
+    
+    <div class="info-box">
+        <h3>Current Session Status</h3>
+        <p>If you're logged in, you should see your name instead of "null"</p>
+        <p>Session will auto-expire in: <span class="logout-timer" id="timer">10:00</span></p>
+    </div>
+
+    <div class="info-box">
+        <h3>Auto Logout Features</h3>
+        <ul>
+            <li>✅ Cookie expires after 10 minutes (600 seconds)</li>
+            <li>✅ Session timeout on server side</li>
+            <li>🔄 JavaScript countdown timer (added below)</li>
+            <li>🔄 Automatic redirect to login page</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <h3>Test Instructions</h3>
+        <ol>
+            <li>Login as user: <a href="UserLogin.html">Login Here</a></li>
+            <li>Navigate to any user page</li>
+            <li>Wait for 10 minutes or refresh after 10 minutes</li>
+            <li>Should automatically redirect to login</li>
+        </ol>
+    </div>
+
+    <script>
+        // Auto logout timer - 10 minutes (600 seconds)
+        let timeLeft = 600;
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                alert('Session expired! Redirecting to login page...');
+                window.location.href = 'UserLogin.html';
+                return;
+            }
+            
+            timeLeft--;
+        }
+        
+        // Update timer every second
+        setInterval(updateTimer, 1000);
+        
+        // Also check if user is actually logged in
+        function checkLoginStatus() {
+            // This would normally check session/cookie status
+            // For demo, we'll just show the timer
+            console.log('Checking login status...');
+        }
+        
+        // Check login status every minute
+        setInterval(checkLoginStatus, 60000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Train Management - Test</title>
+<link rel="stylesheet" href="UserHome_Css.css">
+<style>
+.form-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+input[type="text"], input[type="number"] {
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+}
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+    <header>
+        <h1 class="hd">Admin Train Management Test</h1>
+    </header>
+
+    <!-- Add Train Form -->
+    <div class="form-container">
+        <div class="form-title">Add New Train</div>
+        <form action="adminaddtrain" method="post">
+            Train Number: <input type="number" name="trainno" placeholder="e.g., 10008" required><br><br>
+            Train Name: <input type="text" name="trainname" placeholder="e.g., EXPRESS TRAIN" required><br><br>
+            From Station: <input type="text" name="fromstation" placeholder="e.g., DELHI" required><br><br>
+            To Station: <input type="text" name="tostation" placeholder="e.g., MUMBAI" required><br><br>
+            Available Seats: <input type="number" name="available" placeholder="e.g., 100" required><br><br>
+            Fare (INR): <input type="number" step="0.01" name="fare" placeholder="e.g., 750.00" required><br><br>
+            <input type="submit" value="ADD TRAIN">
+        </form>
+    </div>
+
+    <!-- Search Train Form -->
+    <div class="form-container">
+        <div class="form-title">Search Train for Update</div>
+        <form action="adminupdatetrain" method="post">
+            Train Number: <input type="number" name="trainnumber" placeholder="e.g., 10001" required><br><br>
+            <input type="submit" value="SEARCH TRAIN">
+        </form>
+    </div>
+
+    <!-- Delete Train Form -->
+    <div class="form-container">
+        <div class="form-title">Delete Train</div>
+        <form action="admincancletrain" method="post">
+            Train Number: <input type="number" name="trainnumber" placeholder="e.g., 10001" required><br><br>
+            <input type="submit" value="DELETE TRAIN" onclick="return confirm('Are you sure you want to delete this train?')">
+        </form>
+    </div>
+
+    <!-- Current Trains Display -->
+    <div class="form-container">
+        <div class="form-title">Current Trains in Database</div>
+        <p>Use these train numbers for testing update/delete:</p>
+        <ul>
+            <li>10001 - JODHPUR EXP (HOWRAH → JODHPUR)</li>
+            <li>10002 - YAMUNA EXP (GAYA → DELHI)</li>
+            <li>10003 - NILANCHAL EXP (GAYA → HOWRAH)</li>
+            <li>10004 - JAN SATABDI EXP (RANCHI → PATNA)</li>
+            <li>10005 - GANGE EXP (MUMBAI → KERALA)</li>
+            <li>10006 - GARIB RATH EXP (PATNA → DELHI)</li>
+        </ul>
+    </div>
+
+    <div class="form-container">
+        <p><strong>Note:</strong> Make sure you are logged in as admin first!</p>
+        <p><a href="AdminLogin.html">Admin Login</a> | <a href="AdminHome.html">Admin Home</a></p>
+    </div>
+</body>
+</html>

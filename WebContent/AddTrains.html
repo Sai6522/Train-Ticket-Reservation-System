@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>E-Trains</title>
+<link rel="stylesheet" href="UserHome_Css.css">
+</head>
+<body>
+	<header>
+		<h1 class="hd">National Ticket Booking Spot</h1>
+		<div class="home">
+			<p class="menu">
+				<a href="AdminHome.html">Home</a>
+			</p>
+		</div>
+		<div class="home">
+			<p class="menu">
+				<a href="adminviewtrainfwd">View Trains</a>
+			</p>
+		</div>
+		<div class="home">
+			<p class="menu">
+				<a href="adminsearchtrainfwd">Search By TrainNo</a>
+			</p>
+		</div>
+
+		<div class="home">
+			<p class="menu">
+				<a href="addtrainfwd">Add Train</a>
+			</p>
+		</div>
+		<div class="home">
+			<p class="menu">
+				<a href="cancletrainfwd">Delete Train </a>
+			</p>
+		</div>
+		<div class="home">
+			<p class="menu">
+				<a href="updatetrain">Update Train Details</a>
+			</p>
+		</div>
+		<div class="home">
+			<p class="menu">
+				<a href="adminlogout">Logout</a>
+			</p>
+		</div>
+	</header>
+	<div class='main'>
+		<p class='menu'> Add Trains </p>
+	</div>
+	<form class="tab" action="adminaddtrain" method="post">
+		<br /> Train Number:<input type="number" name="trainno" placeholder="e.g., 10008" required><br />
+		<br /> Train Name: <input type="text" name="trainname" placeholder="e.g., EXPRESS TRAIN" required><br />
+		<br /> From Station: <input type="text" name="fromstation" placeholder="e.g., DELHI" required><br />
+		<br /> To Station: <input type="text" name="tostation" placeholder="e.g., MUMBAI" required><br />
+		<br /> Available Seats: <input type="number" name="available" placeholder="e.g., 100" required><br />
+		<br /> Fare (INR): <input type="number" step="0.01" name="fare" placeholder="e.g., 750.00" required><br />
+		<br /> <input type="submit" value=" ADD TRAIN ">
+	</form>
+	<br />
+</body>
+</html>
